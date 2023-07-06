@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useJsApiLoader, GoogleMap, MarkerF, InfoWindow } from '@react-google-maps/api';
+import { formatDate, formatTime, formatAddress } from '../../04-utilities/usefulFunctions';
 import PropTypes from 'prop-types';
 import './Map.css';
 
@@ -8,11 +9,12 @@ const Map = ({ incidentData }) => {
     googleMapsApiKey: 'AIzaSyAFKD1DD_Pimli8WqbJlOjQ798ghI2Tpc8',
   });
 
+  useEffect(() => {
+    console.log(incidentData);
+  }, [incidentData]);
+
   const center = useMemo(() => ({ lat: 37.541885, lng: -77.440624 }), []);
   const [selectedMarker, setSelectedMarker] = useState(null);
-  const onLoad = marker => {
-    console.log('marker: ', marker);
-  };
 
   if (!isLoaded) return <div>Loading...</div>;
 
@@ -23,7 +25,6 @@ const Map = ({ incidentData }) => {
       mapContainerClassName="map-container">
       {incidentData.map(incident => (
         <MarkerF
-          onLoad={onLoad}
           key={incident.description.event_id}
           position={{
             lat: incident.address.latitude,
@@ -43,8 +44,11 @@ const Map = ({ incidentData }) => {
             <h2>Marker Coordinates</h2>
             <p>Latitude: {selectedMarker.address.latitude}</p>
             <p>Longitude: {selectedMarker.address.longitude}</p>
-            <h3>Incident Description</h3>
-            <p></p>
+            <h3>Incident Details</h3>
+            <p>Incident Date: {formatDate(selectedMarker.description.event_opened)} </p>
+            <p>Incident Time: {formatTime(selectedMarker.description.event_opened)}</p>
+            <p>Incident Address: {formatAddress(selectedMarker.address)}</p>
+            <p>Incident Type: {selectedMarker.description.type}</p>
           </div>
         </InfoWindow>
       )}
