@@ -3,8 +3,10 @@ import axios from "axios";
 var weatherService = {endpoint: "https://meteostat.p.rapidapi.com" }
 
 
-weatherService.getByDate = (lat, long, startDate, endDate) => {
-    const config = {
+weatherService.getByDate = (lat, long, startDate, endDate) => 
+{
+    const config = 
+    {
       method: "GET",
       url: `${weatherService.endpoint}${"/point/daily"}`,
       params: {
@@ -22,10 +24,11 @@ weatherService.getByDate = (lat, long, startDate, endDate) => {
     };
   
     return axios(config)
-      .then((response) => {
+      .then((response) => 
+      {
         return response;
       });
-  }
+}
     
 
 export default weatherService;
