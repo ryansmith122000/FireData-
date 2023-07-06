@@ -21,7 +21,7 @@ FireData is an innovative solution that empowers fire departments with advanced 
   4. Type the command "npm install". This will install vite + react (Vite is the optimized version of the React Library).
     - If you see the message:
      
-      ➜ "2 moderate severity vulnerabilities" it means semver (ESLINT package) is vulnerable to a denial of service.
+      ➜ "2 moderate severity vulnerabilities" it means semver (react package) is in need of an update.
      
      - Because this is a developing environment and we are not deploying this (it will run on localhost) I did not spend the time it takes to make this error go away.
   5. The line after you typed "NPM install" you should see "added x packages, and audited x packages in x seconds."
@@ -41,6 +41,7 @@ FireData is an innovative solution that empowers fire departments with advanced 
   8. You should see the application open in your browser now.
     - To view the incident data: Click on one of the two markers -> View Enriched Incident Data.
     - The incident data has been enriched to include weather data. I did not display all the data, just the parts I felt were most important.
+     
     - You do not need an API key to view anything. The API key has been set for the fields needed.
        - If you want to include your own API keys for further use of this project, please do the following:
        - Navigate to the <LoadScript> component at the beginning of the return statement in src/components/GoogleMap/Map.jsx
