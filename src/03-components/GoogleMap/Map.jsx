@@ -18,7 +18,7 @@ const Map = ({ incidentData }) => {
 
   return (
     <GoogleMap
-      zoom={15}
+      zoom={10}
       center={center}
       mapContainerClassName="map-container">
       {incidentData.map(incident => (
