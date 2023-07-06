@@ -20,7 +20,11 @@ const Map = ({ incidentData }) => {
 
   useEffect(() => {
     incidentData.forEach(incident => {
-      weatherService.getByDate(incident.address.latitude, incident.address.longitude, formatDate(incident.description.event_opened), formatDate(incident.description.event_closed))
+
+      weatherService.getByDate(incident.address.latitude, 
+        incident.address.longitude, 
+        formatDate(incident.description.event_opened), 
+        formatDate(incident.description.event_closed))
         .then(response => { setWeatherData(prevData => ({ ...prevData, [incident.description.event_id]: response.data.data[0] }))})
         .catch(error => { console.error('Error:', error); })});
 
@@ -100,7 +104,7 @@ const Map = ({ incidentData }) => {
   );
 };
 
-// ------------------------------------------------------- Data validation through the use of PropTypes ------------------------------------------------------- //
+// ----------------------------------------------------- Data Type validation through the use of PropTypes ------------------------------------------------------- //
 
 Map.propTypes = {
   incidentData: PropTypes.arrayOf(
