@@ -23,7 +23,6 @@ FireData is an innovative solution that empowers fire departments with advanced 
      
       ➜ "2 moderate severity vulnerabilities" it means semver (react package) is in need of an update.
      
-     - Because this is a developing environment and we are not deploying this (it will run on localhost) I did not spend the time it takes to make this error go away.
   5. The line after you typed "NPM install" you should see "added x packages, and audited x packages in x seconds."
   6. In the same terminal window, type "npm run dev" and the message below should pop up:
      
